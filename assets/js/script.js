@@ -203,11 +203,13 @@ popupOpenBtns.forEach(function (el) {
 // end popups
 
 document.addEventListener("DOMContentLoaded", () => {
+  Fancybox.bind("[data-fancybox]", {});
   if(document.querySelector("#calculator")){
     const calc = new Calculator("#calculator")
   }
   InitTabs(".header__nav-sublistContainer");
   InitTabs(".services");
+  InitTabs(".gallery");
 
 
   const headerTop = document.querySelector(".header__top");
@@ -405,6 +407,66 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     },
   });
+  const actionSlider = new Swiper(".actions__slider", {
+    slidesPerView: 1.1,
+    spaceBetween: 10,
+    breakpoints: {
+      1100: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      1700: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+      },
+    },
+  });
+
+  const gallerySlider = new Swiper(".gallery__galleryslider", {
+    slidesPerView: 1.1,
+    spaceBetween: 10,
+     navigation: {
+      nextEl: ".gallery-button.next",
+      prevEl: ".gallery-button.prev",
+    },
+     pagination: {
+      el: ".gallery__pagination.slider-pagination",
+      type: "bullets",
+    },
+    breakpoints: {
+      951: {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        
+      }
+    },
+  });
+
+
+  const licensesSlider = new Swiper(".gallery__licensesSlider", {
+    slidesPerView: 1.1,
+    spaceBetween: 10,
+     pagination: {
+      el: ".gallery__licensesSlider-pagination",
+      type: "bullets",
+    },
+    breakpoints: {
+      951: {
+        slidesPerView: 2,
+        spaceBetween: 10,
+      },
+      1200: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+      },
+      1700: {
+        slidesPerView: 4,
+        spaceBetween: 20,
+      },
+    },
+  });
+
+
    const allRewiewsTexts = document.querySelectorAll('.reviews__item .reviews__item-text')
   if(allRewiewsTexts.length){
     allRewiewsTexts.forEach((text) =>{
