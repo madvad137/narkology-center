@@ -68,7 +68,7 @@ class Calculator {
           , l = document.querySelectorAll('.calculator__etapsTab.active .calculator__checkboxBlock input[type="radio"]:checked');
         if (e.length || l.length) {
             if ((this.etap++,
-            this.etap > 4))
+            this.etap > 5))
                 return;
             this.calculatorEtapLinks.forEach( (e, l) => {
                 l < this.etap ? (e.classList.add("completed"),
@@ -508,6 +508,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  const mobileWidjetsBtn = document.querySelector('.mobileWidjetBtn')
+  const widjets = document.querySelector('.widjets')
+
+  if(mobileWidjetsBtn && widjets){
+    mobileWidjetsBtn.addEventListener('click', () =>{
+      widjets.classList.toggle('active')
+      mobileWidjetsBtn.classList.toggle('active')
+    })
+  }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -711,6 +720,25 @@ document.addEventListener("DOMContentLoaded", () => {
       1700: {
         slidesPerView: 3,
         spaceBetween: 20,
+      },
+    },
+  });
+
+  const howSlider = new Swiper(".how__slider", {
+    slidesPerView: 1.1,
+    spaceBetween:10,
+    pagination: {
+    el: ".how__slider-pagination",
+    clickable: true,
+      renderBullet: function (index, className) {
+        const number = (index + 1).toString().padStart(2, "0");
+        return `<span class="${className}">${number}</span>`;
+      },
+    },
+    breakpoints: {
+      1101: {
+        slidesPerView: 1,
+        spaceBetween:0
       },
     },
   });
