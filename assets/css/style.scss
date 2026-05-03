@@ -2864,6 +2864,39 @@ html.lock {
       }
     }
   }
+  & ol{
+    list-style-type: none; 
+	  counter-reset: numol;
+    margin-bottom: 20px;
+    & li{
+      font-size: 16px;
+      line-height: 22px;
+      color: $primary;
+      margin-bottom: 20px;
+      padding-left: 40px;
+      position: relative;
+      &::before{
+        content: counter(numol);
+        counter-increment: numol;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $white;
+        background: $main-800;
+        border-radius: 8px;
+        width: 28px;
+        height: 28px;
+        position: absolute;
+        left: 0;
+        top: -3px;
+        font-size: 14px;
+        font-weight: 400;
+      }
+      &:last-child{
+        margin-bottom: 0;
+      }
+    }
+  }
   & h3 {
     font-size: 42px;
     color: $primary;
@@ -2947,6 +2980,8 @@ html.lock {
 }
 
 @media(max-width:950px){
+
+
   .textWithInfo{
     padding: 80px 0;
   }
@@ -3027,6 +3062,20 @@ html.lock {
   font-size: 14px;
     line-height: 20px;
     margin-bottom: 10px;
+}
+.textblock ol{
+  margin-bottom: 12px;
+}
+.textblock ol li{
+  font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    padding-left: 32px;
+    &::before{
+      font-size: 12px;
+      width: 24px;
+      height: 24px;
+    }
 }
 .textblock .warn{
   padding: 20px 20px 20px 32px;
@@ -6358,6 +6407,48 @@ html.lock {
     background: #B8AEA1;
     & svg path {
       fill: $white;
+    }
+  }
+}
+
+.cookie{
+  position: fixed;
+  bottom: 40px;
+  left: 40px;
+  width: 100%;
+  max-width: 360px;
+  background: $white;
+  border-radius: 24px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 3;
+  &__text{
+    font-size: 14px;
+    line-height: 20px;
+    color: $primary;
+    & a{
+      color: $main-800;
+      text-decoration: underline;
+    }
+  }
+}
+@media(max-width:950px){
+  .cookie{
+    bottom: 10px;
+    left: 10px;
+    padding: 20px;
+    border-radius: 20px;
+    width: calc(100% - 20px);
+    gap: 12px;
+    &__text{
+      font-size: 12px;
+      line-height: 16px;
+    }
+    & .primary-btn{
+      width: 100%;
+      justify-content: center;
     }
   }
 }
